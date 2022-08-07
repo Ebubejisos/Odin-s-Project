@@ -5,13 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
 </head>
-<body>
+<body id="html" class="p-3">
     <div id="body" class="">
         <input type="text" name="useNewBook" id="addBook">
         <button id="add">Add</button>
     </div>
+    <hr>
+    <!-- LIBRARY CARD -->
+    <div class="card" style="width: 18rem; font-family: Verdana;">
+        <div class="card-header">
+          Library
+        </div>
+        <ul id="listEntry" class="list-group list-group-flush">
+         <!-- this is where our new books are added-->
+        </ul>
+      </div>
+      <hr>
+      <div id="but" class="">
+        <button id="btn1">dark</button>
+        <button id="btn2">default</button>
+      </div>
 
-    <script src="class.js"></script>
+    <script src="Library.js"></script>
+    <script src="bootstrap.bundle.js"></script>
 </body>
 </html>
