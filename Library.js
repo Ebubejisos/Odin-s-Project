@@ -4,6 +4,7 @@ function Book(title, author, pages) {
     this.title = title;
     this.author  = author;
     this.pages = pages;
+    return(this.title, this.author, this.pages)
 }
 
 // we will create extra functions accessible to each new Book
@@ -18,36 +19,38 @@ Book.prototype.add = function(){
 
 
 // TIME TO CREATE SOME BOOKS AND ADD TO OUR LIBRARY
-new Book("Thor", "Marvel comics", 20).add();
-new Book("Loki", "Kahn the conqueror", 120).add();
+const book1= new Book("Thor", "Marvel comics", 20).add();
+const book2= new Book("Loki", "Kahn the conqueror", 120).add();
 
 
 // console.log(myLibrary[0].info())
 // console.log(myLibrary)
-
 // VIEW
 // We will create a function that loops through the arrays and displays in the html
 
 // manual adding of books from javascript class constructor
-myLibrary.forEach((element) => {
+(function insertDOM(){
+    myLibrary.forEach((element) => {
     let card = document.createElement("li");
     card.classList.add("list-group-item");
     card.innerHTML = element.info();
     document.getElementById("listEntry").appendChild(card);
 })
+})();
 // myLibrary.forEach((element) => console.log(element.info()))
-
 
 // BUTTON CLICK FUNCTION
 // appending new book into html library
 document.getElementById('add').onclick = ()=> {
-        const title = document.getElementById("bookTitle").value;
-        const author = document.getElementById("bookAuthor").value;
-        const pages = document.getElementById("bookPages").value;
-        const newDiv = document.createElement("li");
-        newDiv.classList.add("list-group-item");
-        newDiv.innerHTML = `${title} by ${author}, ${pages} pages.`
-        document.getElementById("listEntry").appendChild(newDiv);
+    this.title = document.getElementById("bookTitle").value;
+    this.author = document.getElementById("bookAuthor").value;
+    this.pages = document.getElementById("bookPages").value;
+    const book= new Book(this.title,this.author,this.pages);
+    book.add();
+    let card = document.createElement("li");
+    card.classList.add("list-group-item");
+    card.innerHTML = book.info();
+    document.getElementById("listEntry").appendChild(card);
 }
 
 // open form
