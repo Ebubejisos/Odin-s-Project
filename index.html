@@ -5,29 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body id="html" class="p-3">
     <div id="body" class="">
-        <input type="text" name="useNewBook" id="addBook">
-        <button id="add">Add</button>
+      <button type="button" class="btn btn-primary rounded-0" onclick="openForm()" style="background-color: #15ff00; color:#2d302b;">+ Add Book</button>
     </div>
     <hr>
     <!-- LIBRARY CARD -->
-    <div class="card" style="width: 18rem; font-family: Verdana;">
-        <div class="card-header">
+    <div class="d-flex flex-row justify-content-between">
+      <div class="card" style="width: 20rem; height: max-content;font-family: Verdana;">
+        <div class="card-header" style="background-color: #b3b1ae">
           Library
         </div>
         <ul id="listEntry" class="list-group list-group-flush">
-         <!-- this is where our new books are added-->
+          <!-- THIS IS WHERE NEW BOOKS ARE ADDED-->
         </ul>
       </div>
-      <hr>
-      <div id="but" class="">
-        <button id="btn1">dark</button>
-        <button id="btn2">default</button>
+      <form id="form" style="height: max-content; border: 1px solid #ccc8be; padding: 10px;" class="rounded formDisplay">
+        <!-- Title input -->
+        <div class="">
+          <label for="Input1" class="form-label m-0">Title</label>
+          <input id="bookTitle" type="text" class="form-control" name="Input1">
+        </div>
+        <!-- Author input -->
+        <div class="">
+          <label for="Input1" class="form-label m-0">Author</label>
+          <input id="bookAuthor" type="text" class="form-control" name="Input1">
+        </div>
+        <!-- Pages input -->
+        <div class="">
+          <label for="Input1" class="form-label m-0">Pages</label>
+          <input id="bookPages" type="number" class="form-control" name="Input1">
+        </div>
+        <!-- Form Buttons -->
+        <div class="d-flex justify-content-between mt-1">
+        <button id="add" type="button" class="btn btn-primary">Submit</button>
+        <button type="button" onclick="closeForm()" class="m-1">close</button>
       </div>
-
+      </form>
+    </div>
     <script src="Library.js"></script>
     <script src="class.js"></script>
     <script src="bootstrap.bundle.js"></script>
