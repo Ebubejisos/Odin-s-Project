@@ -4,30 +4,24 @@ function Book(title, author, pages) {
     this.title = title;
     this.author  = author;
     this.pages = pages;
-    this.isRead = (isRead) => isRead = true ? "Book completed" : "Not yet read" 
+    this.isRead = (isRead) => isRead == true ? "Book completed" : "Not yet read" 
 }
 
+// we will create extra functions accessible to each new Book
 
-function addBookToLibrary(){
-    // we will create a prototype next that allows new Books created to access the addBookToLibrary function using Object.create
-}
-
-addBookToLibrary.prototype.add = function(){
-    myLibrary.push(new Book(this.title, this.author, this.pages, this.read));
-}
-// we will now join the book object to the addBookToLibrary prototype
-
-Book.prototype = Object.create(addBookToLibrary.prototype);
-// we are creating an extra function for new Books just incase we want to see an easy description of the book
-
+// Note: prototypes gives new objects reuseable properties or method instead of writing it into the constructor itself that results in duplication of codes. Hence, prototypes save space and makes a program run faster 
 Book.prototype.info = function(){
     return`${this.title} by ${this.author}, ${this.pages} pages`
+}
+Book.prototype.add = function(){
+    myLibrary.push(new Book(this.title, this.author, this.pages, this.read));
 }
 
 
 // TIME TO CREATE SOME BOOKS AND ADD TO OUR LIBRARY
 new Book("Thor", "Marvel comics", 20).add();
 new Book("Loki", "Kahn the conqueror", 120).add();
+
 
 // console.log(myLibrary[0].info())
 // console.log(myLibrary)
