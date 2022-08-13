@@ -56,7 +56,7 @@ jeff.sayHello(); // calls the function and logs 'hello!'
 */
 
 // a little game
-/*
+
 const Player = (name, level) => {
   let health = level * 2;
   const getLevel = () => level;
@@ -87,7 +87,7 @@ const jimmie = Player('jim', 10);
 const badGuy = Player('jeff', 5);
 jimmie.attack(badGuy);
 console.log(jimmie.name) //this returns undefined because 'name' was not returned
-*/
+
 
 // INHERITANCE WITH FACTORY FUNCTIONS
 /*
