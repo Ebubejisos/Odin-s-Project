@@ -28,22 +28,25 @@
         <!-- Title input -->
         <div class="">
           <label for="Input1" class="form-label m-0">Title</label>
-          <input id="bookTitle" type="text" class="form-control" name="Input1">
+          <input id="bookTitle" type="text" class="form-control" name="bookTitle" maxlength="30" required placeholder="*required">
+          <span id="error1">*field cannot be empty</span>
         </div>
         <!-- Author input -->
         <div class="">
           <label for="Input1" class="form-label m-0">Author</label>
-          <input id="bookAuthor" type="text" class="form-control" name="Input1">
+          <input id="bookAuthor" type="text" class="form-control" name="bookAuthor" maxlength="30" required placeholder="*required">          <span id="error2">*field cannot be empty</span>
+
         </div>
         <!-- Pages input -->
         <div class="">
           <label for="Input1" class="form-label m-0">Pages</label>
-          <input id="bookPages" type="number" class="form-control" name="Input1">
+          <input id="bookPages" type="number" class="form-control" name="bookPages" min="1" value="1" required>          <span id="error3">*invalid number of pages</span>
+
         </div>
         <!-- Form Buttons -->
         <div class="d-flex justify-content-between mt-1">
         <button id="add" type="button" class="btn btn-primary">Done</button>
-        <button type="button" onclick="closeForm()" class="m-1">close</button>
+        <button type="button" onclick="closeForm()" class="m-1 button">close</button>
       </div>
       </form>
     </div>

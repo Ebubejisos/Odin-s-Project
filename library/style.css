@@ -1,3 +1,39 @@
+body{
+    background-color: #ffc04b !important;
+}
+
 .formDisplay {
     display: none;
 }
+
+#form{
+    background-color: #f0f0f0;
+}
+.button{
+    color: white;
+    background-color: #f65c5c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.button:hover {
+    font-size: 102%;
+    background-color: #ff3131;
+}
+
+#form input:invalid{
+    border: 2px solid red;
+}
+
+span{
+    display: none;
+    font-size: x-small;
+    color: #ff3131;
+}
+.error{
+    display: block ;
+}
+
+
+/* Utility */

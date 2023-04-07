@@ -29,25 +29,38 @@ document.getElementById('add').onclick = ()=> {
     let title = document.getElementById("bookTitle").value;
     let author = document.getElementById("bookAuthor").value;
     let pages = document.getElementById("bookPages").value;
-    Number(pages);
-    if(pages < 0){
-        pages = 0 //restricts value of pages to numbers >= 0
+    const span = document.querySelectorAll('#form span')
+    span.forEach(el=> el.classList.remove('error'));
+
+    let isValid = true;
+    if(pages < 1){
+        const error = document.querySelector('#error3');
+        error.classList.add('error')
+        isValid = false;
+    }
+    else if(title == ""){
+        const error = document.querySelector('#error1');
+        error.classList.add('error')
+        isValid = false
+    }
+    else if(author == ""){
+        const error = document.querySelector('#error2');
+        error.classList.add('error')
+        isValid = false; 
+    }
+    if(isValid == false){
+        return
     }
     const book= new Book(title,author,pages);
     book.add();
     render();
+    closeForm();
 }
 // deleting book
 function deleteBook(event){
     const btn = event.target;// this selects the element this function is run with i.e the button that is clicked
-    myLibrary = myLibrary.filter((element)=>{
-        if(element.title === btn.id){
-            return false;
-        }
-        else{
-            return true
-        }
-    })
+    myLibrary = myLibrary.filter((element) => {
+        return element.title === btn.id ?  false : true});
     render()
 }
 // open form
@@ -59,13 +72,14 @@ function openForm(){
 function closeForm(){
     let form = document.getElementById("form");
     form.style.display = "none";
+    document.querySelectorAll('input[type="text"]').forEach(el=>el.value = '');
 }
 
 //* VIEW
 
 // We will create a function that loops through the arrays and displays in the html
 function render(){
-    document.getElementById('listEntry').innerHTML = '' //this clears the DOM before inserting to avoid multiple display whenever the function is called
+    document.getElementById('listEntry').innerHTML = ''; //this clears the DOM before inserting to avoid multiple display whenever the function is called
     myLibrary.forEach((element) => {
     const card = document.createElement("li");
     card.classList.add("list-group-item");
@@ -73,6 +87,7 @@ function render(){
     // button
     const btn = document.createElement("button")
     btn.innerText = "remove";
+    btn.classList.add('button');
     btn.id = element.title;// assigns <button id="element.title">
     btn.onclick = deleteBook;
     // appending everything
