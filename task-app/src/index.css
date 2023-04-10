@@ -1,13 +1,65 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Tillana&display=swap');
+
+.App{
+  font-family: 'Quicksand', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.task-list {
+  border-bottom: 2px solid #5d5d5d;
+  padding-bottom: 3px;
+}
+.task-list p {
+  font-family: 'Tillana', cursive;
+}
+.input {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.addBtn {
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid #333333ee;
+  color: #fefefe;
+  background-color: #ffa449;
+  display: block;
+  margin: 10px auto;
+}
+.addBtn:hover {
+  font-size: 18px;
+  background-color: #ff8000;
+}
+.input input,textarea {
+  outline: none;
+  color: #222222ee;
+  font-family: 'Quicksand', sans-serif;
+}
+.task-list h2, p{
+  margin: 0;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.task-list img {
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background-color: #ff1919;
+  cursor: pointer;
+}
+.task-list img:hover {
+  height: 21px;
+  width: 21px;
+}
+.task-list button {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #4a4a4a;
+  background-color: #ffa561;
+  color: #fefefe;
 }
