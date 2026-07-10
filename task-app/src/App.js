@@ -5,8 +5,6 @@ import uniqid from "uniqid";
 function App() {
   const [task, setTask] = useState("");
   const [detail, setDetail] = useState("");
-  const [updTitle, setUpdTitle] = useState("");
-  const [updDetail, setUpdDetail] = useState("");
   const [taskArray, setTaskArray] = useState([
     {
       title: "Home work",
@@ -37,13 +35,6 @@ function App() {
     const newArray = taskArray.filter((element) => element.id != id);
     setTaskArray(newArray);
   }
-  function handleEdit(id) {
-    const taskIndex = taskArray.findIndex((element) => element.id == id);
-    const mutArray = taskArray.slice();
-    mutArray[taskIndex].details = updDetail;
-    mutArray[taskIndex].title = updTitle;
-    setTaskArray(mutArray);
-  }
 
   return (
     <div className="App">
@@ -69,9 +60,7 @@ function App() {
       <Overview
         taskArr={taskArray}
         handleDelete={handleDelete}
-        handleEdit={handleEdit}
-        setUpdTitle={setUpdTitle}
-        setUpdDetail={setUpdDetail}
+        setTaskArray={setTaskArray}
       />
     </div>
   );
