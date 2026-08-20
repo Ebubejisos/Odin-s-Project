@@ -48,7 +48,118 @@ class LinkedList {
     }
     return this.tail.value;
   }
-
+  // returns node at given index
+  atIndex(index) {
+    if (index < 0) return undefined;
+    let current = this.head;
+    let count = 0;
+    while (current !== null) {
+      if (count === index) {
+        return current.value;
+      }
+      count++;
+      current = current.nextNode;
+    }
+    return undefined;
+  };
+  // removes the head node and returns it's value
+  pop() {
+    if (!this.head) return undefined;
+    const headNode = this.head;
+    this.head = headNode.nextNode;
+    return headNode.value;
+  };
+  // checks if a value exists in the list
+  contains(value) {
+    let current = this.head;
+    while (current !== null) {
+      if (current.value === value) {
+        return true;
+      };
+      current = current.nextNode;
+    }
+    return false;
+  };
+  // returns index of the first node containing the given value, or -1 if not found
+  findIndex(value) {
+    let current = this.head;
+    let index = 0;
+    while (current !== null) {
+      if (current.value === value) {
+        return index;
+      }
+      index++;
+      current = current.nextNode;
+    }
+    return -1;
+  };
+  // logs out linked list in a string representation
+  toString() {
+    let current = this.head;
+    let result = "";
+    while (current !== null) {
+      result += `( ${current.value} ) -> `;
+      current = current.nextNode;
+    };
+    return result + "null";
+  };
+  // inserts new nodes at the start of a given index
+  insertAt(index, ...values) {
+    if (values.length === 0) {
+      throw new Error("No values provided for insertion");
+    };
+    if (index < 0 || index > this.size()) {
+      throw new RangeError("Index out of bounds");
+    }
+    let currentIndex = 0;
+    let current = this.head;
+    let prevNode;
+    while (current !== null || currentIndex === index) {
+      if (currentIndex === index) {
+        if (current === this.head) {
+          values.reverse().forEach(value => this.prepend(value));
+        } else if (prevNode === this.tail) {
+          values.forEach(value => this.append(value));
+        } else {
+          values.forEach(value => {
+            value = new Node(value);
+            value.nextNode = current;
+            prevNode.nextNode = value;
+            prevNode = value;
+          })
+        }
+        return;
+      }
+      currentIndex++;
+      prevNode = current;
+      current = current.nextNode;
+    }
+  };
+  // removes node at given index
+  removeAt(index) {
+    if (index < 0 || index > this.size() - 1) {
+      throw new RangeError("Index out of bounds");
+    }
+    let current = this.head;
+    let currentIndex = 0;
+    let prevNode;
+    while (current !== null || currentIndex === index) {
+      if (currentIndex === index) {
+        if (current === this.head) {
+          this.pop();
+          return;
+        }
+        prevNode.nextNode = current.nextNode;
+        if (current === this.tail) {
+          this.tail = prevNode;
+        };
+        return;
+      }
+      currentIndex++;
+      prevNode = current;
+      current = current.nextNode;
+    }
+  }
 };
 
 class Node {
